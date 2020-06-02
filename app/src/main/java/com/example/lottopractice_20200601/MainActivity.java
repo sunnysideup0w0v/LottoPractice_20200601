@@ -3,8 +3,10 @@ package com.example.lottopractice_20200601;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lottopractice_20200601.databinding.ActivityMainBinding;
 
@@ -29,6 +31,19 @@ public class MainActivity extends BaseActivity {
     int fifthRankCount = 0;
     int unrankedCount = 0;
 
+    Handler mHandler = new Handler();
+    Runnable buyLottoRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if(useMoney<10000000){
+                makeLottoWinNumbers();
+                checkWinRank();
+            } else {
+                Toast.makeText(mContext, "로또 구매를 종료합니다.", Toast.LENGTH_SHORT).show();
+            }
+            mHandler.post(buyLottoRunnable);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +65,7 @@ public class MainActivity extends BaseActivity {
         binding.buyAutoLottoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                while(true){
-                    makeLottoWinNumbers();
-                    checkWinRank();
-                    if(useMoney > 10000000){
-                        break;
-                    }
-                }
+                mHandler.post(buyLottoRunnable);
             }
         });
     }
