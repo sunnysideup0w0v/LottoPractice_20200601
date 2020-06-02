@@ -1,14 +1,27 @@
 package com.example.lottopractice_20200601;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.lottopractice_20200601.databinding.ActivityMainBinding;
 
+public class MainActivity extends BaseActivity {
+    ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+    }
+
+    @Override
+    public void setupEvents() {
+
+    }
+
+    @Override
+    public void setValues() {
+
     }
 }
