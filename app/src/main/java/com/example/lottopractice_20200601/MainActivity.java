@@ -1,16 +1,12 @@
 package com.example.lottopractice_20200601;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.lottopractice_20200601.databinding.ActivityMainBinding;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +21,14 @@ public class MainActivity extends BaseActivity {
 
     List<TextView> myNumTxts = new ArrayList<>();
     long winMoney = 0L;
+
+    int firstRankCount = 0;
+    int secondRankCount = 0;
+    int thirdRankCount = 0;
+    int fourthRankCount = 0;
+    int fifthRankCount = 0;
+    int unrankedCount = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +128,7 @@ public class MainActivity extends BaseActivity {
         }
         if(correctCount==6){
             winMoney += 1300000000;
+            firstRankCount++;
         } else if (correctCount==5){
             boolean isBonusNumCorrect = false;
             for(TextView myNumTxt: myNumTxts){
@@ -135,19 +140,30 @@ public class MainActivity extends BaseActivity {
             }
             if(isBonusNumCorrect){
                 winMoney+=54000000;
+                secondRankCount++;
             } else {
                 winMoney+=1450000;
+                thirdRankCount++;
             }
         } else if(correctCount == 4){
             winMoney += 50000;
+            fourthRankCount++;
         } else if(correctCount == 3){
             useMoney -= 5000;
+            fifthRankCount++;
         } else {
-
+            unrankedCount++;
         }
 
         binding.winMoneyTxt.setText(String.format("%,d원",winMoney));
         binding.useMoneyTxt.setText(String.format("%,d원",useMoney));
+
+        binding.firstRankTxt.setText(String.format("%d회",firstRankCount));
+        binding.secondRankTxt.setText(String.format("%d회",secondRankCount));
+        binding.thirdRankTxt.setText(String.format("%d회",thirdRankCount));
+        binding.fourthRankTxt.setText(String.format("%d회",fourthRankCount));
+        binding.fifthRankTxt.setText(String.format("%d회",fifthRankCount));
+        binding.unrankedTxt.setText(String.format("%d회",unrankedCount));
 
     }
 }
