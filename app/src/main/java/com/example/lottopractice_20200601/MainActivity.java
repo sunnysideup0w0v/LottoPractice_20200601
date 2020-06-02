@@ -17,6 +17,7 @@ import java.util.List;
 public class MainActivity extends BaseActivity {
     ActivityMainBinding binding;
     int[] winLottoNumArr = new int[6];
+//    보너스 번호 0으로 세팅
     int bonusNum = 0;
     List<TextView> winNumTxts = new ArrayList<>();
     long useMoney = 0L;
@@ -119,7 +120,12 @@ public class MainActivity extends BaseActivity {
                 }
             }
         }
+//        6개를 뽑는 for문이 다 돌고 나면 => 순서가 뒤죽박죽임.
+//        Arrays 클래스의 static 메소드 활용해서 오름차순 정렬.
+
         Arrays.sort(winLottoNumArr);
+
+//        보너스 번호를 뽑는 무한반복. 하나만 뽑아서 for문은 없고 바로 while true;
         while(true){
             int randomNum = (int)(Math.random()*45+1);
             boolean isDuplicatedOk = true;
@@ -134,10 +140,10 @@ public class MainActivity extends BaseActivity {
                 break;
             }
         }
-
+//      당첨번호 텍스트뷰에 표시
         for(int i=0;i<winNumTxts.size();i++){
             int winNum = winLottoNumArr[i];
-
+//          화면에 있는 당첨번호 텍스트뷰들을 ArrayList에 담아두고 활용.
             winNumTxts.get(i).setText(winNum+"");
         }
         binding.bonusNumTxt.setText(bonusNum+"");
@@ -147,6 +153,7 @@ public class MainActivity extends BaseActivity {
     void checkWinRank(){
         useMoney += 1000;
         binding.useMoneyTxt.setText(String.format("%,d원",useMoney));
+//        당첨번호 0으로 재설정
         int correctCount = 0;
         for(TextView myNumTxt: myNumTxts){
             int myNum = Integer.parseInt(myNumTxt.getText().toString());
@@ -161,10 +168,12 @@ public class MainActivity extends BaseActivity {
             winMoney += 1300000000;
             firstRankCount++;
         } else if (correctCount==5){
+//            당첨번호 중 같은게 있다면 false로 변경
             boolean isBonusNumCorrect = false;
             for(TextView myNumTxt: myNumTxts){
                 int myNum = Integer.parseInt(myNumTxt.getText().toString());
                 if(myNum == bonusNum){
+//                    같은 번호가 없다면 true;
                     isBonusNumCorrect = true;
                     break;
                 }
