@@ -95,13 +95,13 @@
                 android:id="@+id/myNumTxt01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="16"
+                android:text="4"
                 android:textSize="24sp" />
             <TextView
                 android:id="@+id/myNumTxt02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="42"
+                android:text="12"
                 android:layout_marginLeft="10dp"
                 android:textSize="24sp"/>
 
@@ -109,7 +109,7 @@
                 android:id="@+id/myNumTxt03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="73"
+                android:text="24"
                 android:layout_marginLeft="10dp"
                 android:textSize="24sp"/>
 
@@ -117,21 +117,21 @@
                 android:id="@+id/myNumTxt04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="49"
+                android:text="36"
                 android:layout_marginLeft="10dp"
                 android:textSize="24sp"/>
             <TextView
                 android:id="@+id/myNumTxt05"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5"
+                android:text="42"
                 android:layout_marginLeft="10dp"
                 android:textSize="24sp"/>
             <TextView
                 android:id="@+id/myNumTxt06"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="23"
+                android:text="49"
                 android:layout_marginLeft="10dp"
                 android:textSize="24sp"/>
         </LinearLayout>
@@ -158,5 +158,23 @@
                 android:text="0원"/>
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/win_money"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/winMoneyTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0원"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 </layout>
