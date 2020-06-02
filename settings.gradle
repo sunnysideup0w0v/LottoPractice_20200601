@@ -1,0 +1,2 @@
+rootProject.name='LottoPractice_20200601'
+include ':app'
