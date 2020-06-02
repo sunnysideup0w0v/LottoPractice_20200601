@@ -196,6 +196,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/first_rank"/>
                 <TextView
+                    android:layout_marginLeft="15sp"
                     android:id="@+id/firstRankTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -203,7 +204,6 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_marginTop="10sp"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -212,6 +212,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/second_rank"/>
                 <TextView
+                    android:layout_marginLeft="15sp"
                     android:id="@+id/secondRankTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -228,6 +229,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/third_rank"/>
                 <TextView
+                    android:layout_marginLeft="15sp"
                     android:id="@+id/thirdRankTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -235,7 +237,6 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_marginTop="10sp"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -244,6 +245,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/fourth_rank"/>
                 <TextView
+                    android:layout_marginLeft="15sp"
                     android:id="@+id/fourthRankTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -251,7 +253,6 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_marginTop="10sp"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -260,6 +261,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/fifth_rank"/>
                 <TextView
+                    android:layout_marginLeft="15sp"
                     android:id="@+id/fifthRankTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -275,6 +277,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/unranked"/>
                 <TextView
+                    android:layout_marginLeft="15sp"
                     android:id="@+id/unrankedTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
