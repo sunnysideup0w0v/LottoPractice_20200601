@@ -57,6 +57,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void setupEvents() {
+//        한 장 구매시
         binding.buyOneLottoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,16 +65,27 @@ public class MainActivity extends BaseActivity {
                 checkWinRank();
             }
         });
+
+//        자동으로 구매시
         binding.buyAutoLottoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                지금 구매를 안 돌리고 있다면
                 if(!isAutoBuyRunning){
+//                    구매 시작 코드를 할 일로 등록시키자 => mHandler가 실행
                     mHandler.post(buyLottoRunnable);
+//                    구매가 돌아가고 있다고 명시
                     isAutoBuyRunning = true;
+//                    버튼의 문구도 중단하기로 변경
                     binding.buyAutoLottoBtn.setText(getResources().getString(R.string.pause_auto_buying));
                 } else {
+//                    구매가 돌아가고 있다면
+//                    예정된 다음 구매 행동을 할일에서 제거함.
+//                    더 이상 할 일이 없으니 자동으로 정지됨.
                     mHandler.removeCallbacks(buyLottoRunnable);
+//                    지금 구매중이 아니라고 명시.
                     isAutoBuyRunning = false;
+//                    다시 누르면 재개한다고 알려줌.
                     binding.buyAutoLottoBtn.setText(getResources().getString(R.string.resume_auto_buying));
                 }
             }
@@ -82,6 +94,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void setValues() {
+//        당첨번호 텍스트뷰들을 => ArrayList에 담아둠
+//        당첨번호를 적어줄 때 편리하게 짜려고
         winNumTxts.add(binding.winNumTxt01);
         winNumTxts.add(binding.winNumTxt02);
         winNumTxts.add(binding.winNumTxt03);
@@ -89,7 +103,8 @@ public class MainActivity extends BaseActivity {
         winNumTxts.add(binding.winNumTxt05);
         winNumTxts.add(binding.winNumTxt06);
 
-        myNumTxts.add(binding.myNumTxt01);
+//        내 입력 번호도 동일하게 적어줌줌
+       myNumTxts.add(binding.myNumTxt01);
         myNumTxts.add(binding.myNumTxt02);
         myNumTxts.add(binding.myNumTxt03);
         myNumTxts.add(binding.myNumTxt04);
@@ -97,6 +112,7 @@ public class MainActivity extends BaseActivity {
         myNumTxts.add(binding.myNumTxt06);
 
     }
+
     void makeLottoWinNumbers(){
         for(int i=0; i<winLottoNumArr.length;i++){
             winLottoNumArr[i] = 0;
@@ -143,20 +159,28 @@ public class MainActivity extends BaseActivity {
         binding.bonusNumTxt.setText(bonusNum+"");
     }
 
-
+//   등수 확인 코드
     void checkWinRank(){
+//        사용금액 증가
         useMoney += 1000;
+//        증가된 금액을 화면에 반영(중복 코드)
         binding.useMoneyTxt.setText(String.format("%,d원",useMoney));
+//        맞춘 갯수 저장 변수
         int correctCount = 0;
+//        내 입력 번호가 적힌 텍스트뷰들 (setValues 참고) 꺼내봄
         for(TextView myNumTxt: myNumTxts){
+//            적혀있는 숫자(String)를 int로 변경
             int myNum = Integer.parseInt(myNumTxt.getText().toString());
+//            내 숫자, 당첨번호의 숫자 비교
             for(int winNum: winLottoNumArr){
 //                마이넘txt > 스트링 > integer 클래스 이용해서 > int로 파싱
                 if(myNum == winNum){
+//                    같은 숫자를 찾았다면 count 1 증가
                     correctCount++;
                 }
             }
         }
+//        진짜로 등수를 체크하고, 당첨금액을 넘겨주는 if문
         if(correctCount==6){
             winMoney += 1300000000;
             firstRankCount++;
